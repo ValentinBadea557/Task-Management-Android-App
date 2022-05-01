@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/optiune1"
+        android:title="Maps" />
+
+    <item android:id="@+id/optiune2"
+        android:title="Create task from JSON" />
+
+
+</menu>
