@@ -5,7 +5,10 @@
         android:title="Maps" />
 
     <item android:id="@+id/optiune2"
-        android:title="Create task from JSON" />
+        android:title="Vizualizare grafice" />
+
+    <item android:id="@+id/optiune3"
+        android:title="Creare task-uri din fisier JSON" />
 
 
 </menu>

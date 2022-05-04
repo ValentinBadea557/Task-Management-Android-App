@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -39,9 +41,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
 
         /***/
-        Intent intent=getIntent();
-        String data=intent.getStringExtra("currentDate");
-        this.dataSelectata=new Date(data);
+        Intent intent = getIntent();
+        String data = intent.getStringExtra("currentDate");
+        this.dataSelectata = new Date(data);
 
         /***/
         binding = ActivityMapsBinding.inflate(getLayoutInflater());
@@ -69,20 +71,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setMinZoomPreference(14);
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 
-        MyDatabase db=MyDatabase.getInstance(getApplicationContext());
+        MyDatabase db = MyDatabase.getInstance(getApplicationContext());
 
         List<Task> listaTaskuri = db.getTaskDAO().getTasksByDate(db.getUserCurrent().getId(), dataSelectata.getTime());
 
 
+        ArrayList<LatLng> listaPuncte = new ArrayList<>();
 
-        for(Task task:listaTaskuri){
-            String lat=task.getLatitute();
-            String longit=task.getLongitude();
-            LatLng ticker=new LatLng(Double.parseDouble(lat),Double.parseDouble(longit));
+        for (Task task : listaTaskuri) {
+            String lat = task.getLatitute();
+            String longit = task.getLongitude();
+            LatLng ticker = new LatLng(Double.parseDouble(lat), Double.parseDouble(longit));
+            listaPuncte.add(ticker);
             mMap.addMarker(new MarkerOptions().position(ticker).title(task.getName()));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(ticker));
         }
 
+
+//        MarkerOptions markerOptions=new MarkerOptions();
+//        markerOptions.position(atm).title("ATM").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+
+        PolylineOptions plo = new PolylineOptions();
+        for(LatLng ticker:listaPuncte){
+            plo.add(ticker);
+        }
+        plo.color(Color.RED);
+        plo.width(20);
+        mMap.addPolyline(plo);
+
+      //  Marker m = mMap.addMarker(markerOptions);
+      //  m.showInfoWindow();
 
 
 //        //marker la ase
@@ -98,17 +116,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(atm));
 
 
-//        MarkerOptions markerOptions=new MarkerOptions();
-//        markerOptions.position(atm).title("ATM").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-//
-//        PolylineOptions plo=new PolylineOptions();
-//        plo.add(atm);
-//        plo.add(ase);
-//        plo.color(Color.RED);
-//        plo.width(20);
-//        mMap.addPolyline(plo);
-//
-//        Marker m = mMap.addMarker(markerOptions);
-//        m.showInfoWindow();
     }
 }

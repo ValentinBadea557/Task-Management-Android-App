@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     etPass.setInputType(129);
                 }
-                Toast.makeText(getApplicationContext(),aux , Toast.LENGTH_LONG).show();
+             //   Toast.makeText(getApplicationContext(),aux , Toast.LENGTH_LONG).show();
                 //129 textpass
                 //131073
             }

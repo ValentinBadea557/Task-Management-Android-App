@@ -1,6 +1,7 @@
 package com.example.proiectsemestru;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,9 +38,10 @@ public class CustomAdapter extends ArrayAdapter<Task> {
             TextView tv1 = view.findViewById(R.id.tvName);
             tv1.setText("Denumire task: "+task.getName());
 
+
             TextView tv2 = view.findViewById(R.id.tvPriority);
             tv2.setText("Prioritate: "+task.getPrioritate());
-
+            tv2.setGravity(Gravity.CENTER);
         }
         return view;
 
