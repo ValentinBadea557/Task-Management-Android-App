@@ -1,4 +1,4 @@
-package com.example.proiectsemestru;
+package com.example.proiectsemestru.BarChartAndMaps;
 
 import android.content.Context;
 import android.graphics.Canvas;

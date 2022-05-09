@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.proiectsemestru.Entities.Task;
+
 import java.util.List;
 
 public class CustomAdapter extends ArrayAdapter<Task> {

@@ -1,4 +1,4 @@
-package com.example.proiectsemestru;
+package com.example.proiectsemestru.Login;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
@@ -9,6 +9,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.proiectsemestru.MyDatabase;
+import com.example.proiectsemestru.R;
+import com.example.proiectsemestru.Entities.User;
+import com.example.proiectsemestru.ViewActivity;
 
 import java.util.List;
 

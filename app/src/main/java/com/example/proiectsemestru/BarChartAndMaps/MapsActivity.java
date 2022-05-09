@@ -1,16 +1,14 @@
-package com.example.proiectsemestru;
+package com.example.proiectsemestru.BarChartAndMaps;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.CalendarView;
-import android.widget.Toast;
 
+import com.example.proiectsemestru.MyDatabase;
+import com.example.proiectsemestru.R;
+import com.example.proiectsemestru.Entities.Task;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -22,12 +20,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.proiectsemestru.databinding.ActivityMapsBinding;
 import com.google.android.gms.maps.model.PolylineOptions;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -78,6 +73,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         ArrayList<LatLng> listaPuncte = new ArrayList<>();
 
+
+        MarkerOptions markerOptions = null;
+
         for (Task task : listaTaskuri) {
             String lat = task.getLatitute();
             String longit = task.getLongitude();
@@ -85,35 +83,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             listaPuncte.add(ticker);
             mMap.addMarker(new MarkerOptions().position(ticker).title(task.getName()));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(ticker));
+
+            markerOptions = new MarkerOptions();
+
+            if (task.getPrioritate().equals("High"))
+                markerOptions.position(ticker).title(task.getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
+            else if (task.getPrioritate().equals("Medium"))
+                markerOptions.position(ticker).title(task.getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE));
+            else
+                markerOptions.position(ticker).title(task.getName()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+
+
+            Marker m = mMap.addMarker(markerOptions);
+            m.showInfoWindow();
+
+
         }
 
 
-//        MarkerOptions markerOptions=new MarkerOptions();
-//        markerOptions.position(atm).title("ATM").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-
         PolylineOptions plo = new PolylineOptions();
-        for(LatLng ticker:listaPuncte){
+        for (LatLng ticker : listaPuncte) {
             plo.add(ticker);
         }
         plo.color(Color.RED);
         plo.width(20);
         mMap.addPolyline(plo);
-
-      //  Marker m = mMap.addMarker(markerOptions);
-      //  m.showInfoWindow();
-
-
-//        //marker la ase
-//        LatLng ase = new LatLng( 44.41825564675483, 26.086762849191615);
-//        mMap.addMarker(new MarkerOptions().position(ase).title("Marker in ASE"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(ase));
-//
-//
-//
-//        // Add a marker in Sydney and move the camera
-//        LatLng atm = new LatLng(44.41825088339814, 26.086731821140315);
-//        mMap.addMarker(new MarkerOptions().position(atm).title("Marker in ATM"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(atm));
 
 
     }

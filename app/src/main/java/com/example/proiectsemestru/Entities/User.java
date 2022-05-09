@@ -1,4 +1,4 @@
-package com.example.proiectsemestru;
+package com.example.proiectsemestru.Entities;
 
 import androidx.room.Entity;
 import androidx.room.Ignore;

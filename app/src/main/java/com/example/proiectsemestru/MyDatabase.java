@@ -7,6 +7,11 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
+import com.example.proiectsemestru.Entities.Task;
+import com.example.proiectsemestru.Entities.TaskDAO;
+import com.example.proiectsemestru.Entities.User;
+import com.example.proiectsemestru.Entities.UserDAO;
+
 @Database(entities = {User.class, Task.class}, version = 2, exportSchema = false)
 @TypeConverters({DateConverter.class})
 public abstract class MyDatabase extends RoomDatabase {

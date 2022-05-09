@@ -1,10 +1,13 @@
-package com.example.proiectsemestru;
+package com.example.proiectsemestru.Entities;
 
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
+
+import com.example.proiectsemestru.Entities.Task;
+import com.example.proiectsemestru.Entities.User;
 
 import java.util.List;
 

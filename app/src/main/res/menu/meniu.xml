@@ -8,7 +8,7 @@
         android:title="Vizualizare grafice" />
 
     <item android:id="@+id/optiune3"
-        android:title="Creare task-uri din fisier JSON" />
+        android:title="Creare task-uri din JSON" />
 
 
 </menu>

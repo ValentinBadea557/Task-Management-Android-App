@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProiectSemestru">
         <activity
-            android:name=".BarChartActivity"
+            android:name=".BarChartAndMaps.BarChartActivity"
             android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
@@ -28,7 +28,7 @@
             android:value="AIzaSyASegGc62QpybcXFCn40yUlm_tcksCKKsU" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".BarChartAndMaps.MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
         <activity
@@ -38,10 +38,10 @@
             android:name=".CreateTaskActivity"
             android:exported="false" />
         <activity
-            android:name=".Register"
+            android:name=".Login.Register"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Login.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

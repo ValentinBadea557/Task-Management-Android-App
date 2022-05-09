@@ -1,10 +1,13 @@
-package com.example.proiectsemestru;
+package com.example.proiectsemestru.BarChartAndMaps;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.LinearLayout;
+
+import com.example.proiectsemestru.R;
+import com.example.proiectsemestru.Entities.Task;
 
 import java.util.ArrayList;
 import java.util.HashMap;
