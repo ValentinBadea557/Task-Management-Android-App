@@ -13,8 +13,6 @@ import java.util.List;
 
 @Dao
 public interface UserDAO {
-    @Insert
-    long insert(Task user);
 
     @Insert
     long insert(User user);

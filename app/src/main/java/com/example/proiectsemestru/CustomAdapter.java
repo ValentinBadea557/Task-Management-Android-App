@@ -38,12 +38,14 @@ public class CustomAdapter extends ArrayAdapter<Task> {
         Task task= listaTaskuri.get(position);
         if(task!=null){
             TextView tv1 = view.findViewById(R.id.tvName);
-            tv1.setText("Denumire task: "+task.getName());
+            tv1.setText(task.getName());
+            tv1.setTextSize(20);
 
 
             TextView tv2 = view.findViewById(R.id.tvPriority);
             tv2.setText("Prioritate: "+task.getPrioritate());
             tv2.setGravity(Gravity.CENTER);
+            tv2.setTextSize(15);
         }
         return view;
 

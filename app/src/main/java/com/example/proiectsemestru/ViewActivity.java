@@ -139,6 +139,33 @@ public class ViewActivity extends AppCompatActivity {
 
                         db.getTaskDAO().delete(task);
 
+                        List<Task> listaTaskuri = db.getTaskDAO().getTasksByDate(db.getUserCurrent().getId(), dataSelec.getTime());
+                        //Toast.makeText(getApplicationContext(), String.valueOf(listaTaskuri.size()), Toast.LENGTH_LONG).show();
+                        currentListOfTasks.clear();
+                        currentListOfTasks = new ArrayList<>(listaTaskuri);
+
+                        createSharedPreferencesFile(listaTaskuri);
+                        CustomAdapter adapter = new CustomAdapter(getApplicationContext(),
+                                R.layout.elemlistview, listaTaskuri, getLayoutInflater()) {
+                            @NonNull
+                            @Override
+                            public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+                                View view = super.getView(position, convertView, parent);
+                                Task task = listaTaskuri.get(position);
+                                TextView tvPriority = view.findViewById(R.id.tvPriority);
+
+                                if (task.getPrioritate().equals("High")) {
+                                    tvPriority.setTextColor(Color.RED);
+                                } else if (task.getPrioritate().equals("Medium")) {
+                                    tvPriority.setTextColor(Color.parseColor("#FF8000"));
+                                } else if (task.getPrioritate().equals("Low")) {
+                                    tvPriority.setTextColor(Color.GREEN);
+                                }
+                                return view;
+                            }
+                        };
+                        lv.setAdapter(adapter);
+
                     }
                 }).create();
 
@@ -321,6 +348,10 @@ public class ViewActivity extends AppCompatActivity {
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
+                break;
+
+            case R.id.optiune4:
+                finish();
                 break;
         }
         return false;

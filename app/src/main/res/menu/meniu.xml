@@ -10,5 +10,8 @@
     <item android:id="@+id/optiune3"
         android:title="Creare task-uri din JSON" />
 
+    <item android:id="@+id/optiune4"
+        android:title="Logout" />
+
 
 </menu>
